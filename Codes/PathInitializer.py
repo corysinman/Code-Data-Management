@@ -18,22 +18,6 @@ wrDir = filedialog.askdirectory(initialdir=rdDir, title="Choose Writing Director
 if not wrDir:
     raise Exception("No writing folder selected")
 
-# --- Ask user for toolbox name ---
-toolboxName = input("Enter the name of the toolbox to check: ")
-
-# --- Check if toolbox is importable ---
-try:
-    __import__(toolboxName)
-    print(f"{toolboxName} toolbox is already available")
-except ImportError:
-    print(f"{toolboxName} toolbox not found")
-    folderPath = filedialog.askdirectory(title=f"Select the {toolboxName} toolbox folder")
-    if folderPath:
-        import sys
-        sys.path.append(folderPath)
-        print(f"{toolboxName} toolbox added to sys.path")
-    else:
-        print(f"{toolboxName} toolbox not added. Please ensure it is accessible.")
 
 # --- Summary ---
 print("----- PATHS INITIALIZED -----")
